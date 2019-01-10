@@ -7,21 +7,12 @@ const login = {
     createAndAppendLoginInput() {
 
         const outEl = document.querySelector(".output__login");
-        // const userNameInput = document.createElement("input");
-        // const passwordInput = document.createElement("input");
         userNameInput.type = "text";
         userNameInput.placeholder = "username";
         passwordInput.type = "text";
         passwordInput.placeholder = "password";
         outEl.appendChild(userNameInput);
         outEl.appendChild(passwordInput);
-
-
-
-        var username = userNameInput.value;
-        var password = passwordInput.value;
-
-
 
         const loginButton = document.createElement("button");
         loginButton.textContent = ("login");
@@ -41,21 +32,17 @@ const login = {
                     sessionStorage.setItem('userId', user.id)
                     let userId = sessionStorage.getItem('userId');
                     loadUserSpecificPage(userId);
+                } else {
+                    alert("Username/password invalid. If new user, please register. :)")
                 }
                 function loadUserSpecificPage(userId) {
                     console.log(`This is the user page! ${userId}`);
-                }
+                } 
             })
         
         })
-        // let userId = sessionStorage.getItem('userId');
-        // loadUserSpecificPage();
         
-     },
-
-    
-
-     
+     },     
     
 }
 
