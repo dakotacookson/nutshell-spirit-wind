@@ -2,6 +2,8 @@ import API from "./api"
 import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
+const registrationPage = document.querySelector(".output__registration")
+registrationPage.style.display = "none";
 
 const login = {
 // Function to create and append login input fields and login button.
@@ -53,11 +55,13 @@ const login = {
  // Function to hide the login form and display the register form.  
         replaceWithRegistrationForm() {
             console.log("testing");
+            const registrationPage = document.querySelector(".output__registration")
             const loginPage = document.querySelector(".output__login");
             loginPage.style.display = "none";
+            registrationPage.style.display = "block";
   }
         }
     
-}
+
 
 export default login
