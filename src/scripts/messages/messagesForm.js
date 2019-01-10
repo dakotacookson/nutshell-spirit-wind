@@ -20,57 +20,30 @@ const messagesForm = {
 
     messageField.appendChild(messageLabel)
     messageField.appendChild(messageInput)
-
-    let messagePlaceHolderField = document.createElement("fieldset")
-
-    let foodExpirationLabel = document.createElement("label")
-    foodExpirationLabel.textContent = "Expiration"
-    foodExpirationLabel.setAttribute("for", "food__expiration")
-    let foodExpirationInput = document.createElement("input")
-    foodExpirationInput.setAttribute("id", "food__expiration")
-    foodExpirationInput.setAttribute("name", "food__expiration")
-
-    messagePlaceHolderField.appendChild(foodExpirationLabel)
-    messagePlaceHolderField.appendChild(foodExpirationInput)
-
-    let foodTypeField = document.createElement("fieldset")
-
-    let foodTypeLabel = document.createElement("label")
-    foodTypeLabel.textContent = "Type"
-    foodTypeLabel.setAttribute("for", "food__type")
-    let foodTypeInput = document.createElement("input")
-    foodTypeInput.setAttribute("id", "food__type")
-    foodTypeInput.setAttribute("name", "food__type")
-
-    foodTypeField.appendChild(foodTypeLabel)
-    foodTypeField.appendChild(foodTypeInput)
-
-    let submitButton = document.createElement("button")
-    submitButton.textContent = "Add Food"
-    submitButton.setAttribute("class", "food__save")
+    
+    let postButton = document.createElement("button")
+    postButton.textContent = "Post Message"
+    postButton.setAttribute("class", "message__post")
 
     // 2. Attach event listener to button in form
-    submitButton.addEventListener("click", this.handleAddNewFood)
+    postButton.addEventListener("click", this.handleAddNewFood)
 
     // 3. Append the HTML form to the DOM
     //Notice that I have added an article element to my index.html with the class "form".
-    let foodFormFragment = document.createDocumentFragment()
-    foodFormFragment.appendChild(formHeader)
-    foodFormFragment.appendChild(messageField)
-    foodFormFragment.appendChild(messagePlaceHolderField)
-    foodFormFragment.appendChild(foodTypeField)
-    foodFormFragment.appendChild(submitButton)
+    let messageFormFragment = document.createDocumentFragment()
+    messageFormFragment.appendChild(formHeader)
+    messageFormFragment.appendChild(messageField)
+    messageFormFragment.appendChild(postButton)
 
     let formArticle = document.querySelector(".form");
-    formArticle.appendChild(foodFormFragment);
+    formArticle.appendChild(messageFormFragment);
 
   },
   // This module will also contain the function that executes when the button in the form is clicked. When the button in the form is clicked, the following will happen:
   handleAddNewFood (event) {
     // 1. Get user input that user entered
     let inputMessage = document.querySelector("#message").value
-    let inputFoodExpiration = document.querySelector("#food__expiration").value
-    let inputFoodType = document.querySelector("#food__type").value
+    let messageTimeStamp = + new Date()
 
     // 2. Create a new object with the same structure we have been using throughout the application to represent a food item:
     // {
@@ -80,9 +53,8 @@ const messagesForm = {
     // }
 
     let newMessage = {
-      name: inputMessage,
-      expiration: inputFoodExpiration,
-      type: inputFoodType
+      text: inputMessage,
+      timeStamp: messageTimeStamp
     }
 
     // 3. Call the method(postNewFood) with the fetch request to POST to the API and pass it the object we created in the previous step

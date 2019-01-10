@@ -16,23 +16,23 @@ const messages = {
   // </article>
 
   // This HTML is then returned to the point from where this method was called
-  foodBuilder(foodObject) {
-    let foodArticle = document.createElement("article")
+  messageBuilder(messageObject) {
+    let messageArticle = document.createElement("article")
     
-    let foodName = document.createElement("h3")
-    foodName.textContent = foodObject.name
+    let messageName = document.createElement("h3")
+    messageName.textContent = messageObject.name
 
-    let foodExp = document.createElement("p")
-    foodExp.textContent = foodObject.expiration
+    let messageTimeStamp = document.createElement("p")
+    messageTimeStamp.textContent = messageObject.timeStamp
 
     let foodType = document.createElement("p")
-    foodType.textContent = foodObject.type
+    foodType.textContent = messageObject.type
 
-    foodArticle.appendChild(foodName)
-    foodArticle.appendChild(foodExp)
-    foodArticle.appendChild(foodType)
+    messageArticle.appendChild(messageName)
+    messageArticle.appendChild(messageTimeStamp)
+    messageArticle.appendChild(foodType)
 
-    return foodArticle
+    return messageArticle
   }
 }
 
