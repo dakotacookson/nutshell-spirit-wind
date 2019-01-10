@@ -1,4 +1,5 @@
 import API from "./api"
+import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
 
