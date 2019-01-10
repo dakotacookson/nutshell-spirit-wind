@@ -3,13 +3,13 @@ const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
 
 const login = {
-
+// Function to create and append login input fields and login button.
     createAndAppendLoginInput() {
 
         const outEl = document.querySelector(".output__login");
         userNameInput.type = "text";
         userNameInput.placeholder = "username";
-        passwordInput.type = "text";
+        passwordInput.type = "password";
         passwordInput.placeholder = "password";
         outEl.appendChild(userNameInput);
         outEl.appendChild(passwordInput);
@@ -17,9 +17,10 @@ const login = {
         const loginButton = document.createElement("button");
         loginButton.textContent = ("login");
         outEl.appendChild(loginButton);
-
+// Runs the getUserData() function when Login button is clicked.
         loginButton.addEventListener("click", this.getUserData);
     },
+// Gathers data entered into Login input fields. Fetches userdata from API and compares input data with existing user data in API. If input data matches user data in API, runs loadUserSpecificPage(). If input data does not match any user data in API, alert is sent.
     getUserData () {
         const username = userNameInput.value;
         const password = passwordInput.value;
