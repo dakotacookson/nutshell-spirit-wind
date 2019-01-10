@@ -16,9 +16,14 @@ const login = {
 
         const loginButton = document.createElement("button");
         loginButton.textContent = ("login");
+        const registerButton = document.createElement("button");
+        registerButton.textContent = ("register");
         outEl.appendChild(loginButton);
+        outEl.appendChild(registerButton);
 // Runs the getUserData() function when Login button is clicked.
         loginButton.addEventListener("click", this.getUserData);
+// Runs the replaceWithRegistrationForm() function when Register button is clicked.
+        registerButton.addEventListener("click", this.replaceWithRegistrationForm);
     },
 // Gathers data entered into Login input fields. Fetches userdata from API and compares input data with existing user data in API. If input data matches user data in API, runs loadUserSpecificPage(). If input data does not match any user data in API, alert is sent.
     getUserData () {
@@ -43,7 +48,14 @@ const login = {
         
         })
         
-     },     
+     }, 
+ // Function to hide the login form and display the register form.  
+        replaceWithRegistrationForm() {
+            console.log("testing");
+            const loginPage = document.querySelector(".output__login");
+            loginPage.style.display = "none";
+  }
+        }
     
 }
 
