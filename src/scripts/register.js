@@ -1,3 +1,4 @@
+import API from "./api"
 // Declare variables to hold user input
 const userNameInput = document.createElement("input")
 const userPasswordInput = document.createElement("input")
@@ -39,22 +40,21 @@ const registrationForm = {
 
     // Add event listener to createNewUser button
 
-    createNewUser.addEventListener("click", this.registerUser)
-
-
-
-
-
-
-    
+    createNewUser.addEventListener("click", this.registerUser)    
     },
+
     registerUser () {
         const userNameValue = userNameInput.value;
         const userPasswordValue = userPasswordInput.value;
         const userEmailValue = userEmailInput.value;
 
+        let newUserToSave = {
+            userName: userNameValue,
+            password: userPasswordValue,
+            email: userEmailValue
+          }
 
-        console.log(userNameValue,userPasswordValue,userEmailValue)
-    }
+API.postNewData("users",newUserToSave)
+        }
 }
   export default registrationForm
