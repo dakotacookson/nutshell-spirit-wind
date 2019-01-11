@@ -1,18 +1,19 @@
-//Given a single food object, this component builds out the HTML and returns it
+//Given a single messages object, this component builds out the HTML and returns it
 const messages = {
 
-  // This method takes one argument, which we expect to be an object that represents a food and will have the following structure:
+  // This method takes one argument, which we expect to be an object that represents a message and will have the following structure:
   // {
-  //   name: "name value",
-  //   expiration: "expiration value",
-  //   type: "type value"
+  //   id: "a number that represents the primary key of the messages object",
+  //   text: "the message itself",
+  //   userId: "primary key from user object"
+  //   timeStamp: "MM/DD/YYYY, HH:MM:SS AM/PM"
   // }
 
   // Given this object, the method will build HTML elements and append them appropriately so that it will look like this:
   // <article>
-  //   <h3>name value</h3>
-  //   <p>expiration value</p>
-  //   <p>type value</p>
+  //   <h5>username</h5>
+  //   <p>message text</p>
+  //   <p>timestamp</p>
   // </article>
 
   // This HTML is then returned to the point from where this method was called
