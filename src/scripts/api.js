@@ -4,8 +4,19 @@ const API = {
         return fetch(`http://localhost:8088/${resource}`)
         .then(response => response.json())
     },
+    postNewData(resource,payload) {
+        return fetch(`http://localhost:8088/${resource}`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+      }
 
 }
+
+
 
 //     getAllUsers() {
 //         return fetch("http://localhost:8088/users")
