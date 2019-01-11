@@ -26,7 +26,7 @@ const messagesForm = {
     postButton.setAttribute("class", "message__post")
 
     // 2. Attach event listener to button in form
-    postButton.addEventListener("click", this.handleAddNewFood)
+    postButton.addEventListener("click", this.handleAddNewMessage)
 
     // 3. Append the HTML form to the DOM
     //Notice that I have added an article element to my index.html with the class "form".
@@ -40,10 +40,10 @@ const messagesForm = {
 
   },
   // This module will also contain the function that executes when the button in the form is clicked. When the button in the form is clicked, the following will happen:
-  handleAddNewFood (event) {
+  handleAddNewMessage (event) {
     // 1. Get user input that user entered
     let inputMessage = document.querySelector("#message").value
-    let messageTimeStamp = + new Date()
+    let messageTimeStamp = new Date().toLocaleString();
 
     // 2. Create a new object with the same structure we have been using throughout the application to represent a food item:
     // {
@@ -54,7 +54,8 @@ const messagesForm = {
 
     let newMessage = {
       text: inputMessage,
-      timeStamp: messageTimeStamp
+      timeStamp: messageTimeStamp,
+      userId: "placeholder"
     }
 
     // 3. Call the method(postNewFood) with the fetch request to POST to the API and pass it the object we created in the previous step
@@ -75,7 +76,7 @@ const messagesForm = {
     // *******************
     messagesCollection.postNewMessage(newMessage)
     .then(response => {
-      messagesList.fridgify()
+      messagesList.postMessage()
     })
   }
 }

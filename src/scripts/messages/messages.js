@@ -19,18 +19,18 @@ const messages = {
   messageBuilder(messageObject) {
     let messageArticle = document.createElement("article")
     
-    let messageName = document.createElement("h3")
-    messageName.textContent = messageObject.name
+    let messageUserId = document.createElement("h5")
+    messageUserId.textContent = messageObject.userId
+
+    let messageText = document.createElement("p")
+    messageText.textContent = messageObject.text
 
     let messageTimeStamp = document.createElement("p")
     messageTimeStamp.textContent = messageObject.timeStamp
 
-    let foodType = document.createElement("p")
-    foodType.textContent = messageObject.type
-
-    messageArticle.appendChild(messageName)
+    messageArticle.appendChild(messageUserId)
+    messageArticle.appendChild(messageText)
     messageArticle.appendChild(messageTimeStamp)
-    messageArticle.appendChild(foodType)
 
     return messageArticle
   }

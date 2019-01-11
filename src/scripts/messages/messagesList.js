@@ -2,13 +2,13 @@
 
 // To get the data, we will use the foodCollection component.
 import messagesCollection from "./messagesCollection"
-// To build the HTML for each object in the array of food(which is what the data coming from the API becomes once we parse it), we will use the food component.
+// To build the HTML for each object in the messages array (which is what the data coming from the API becomes once we parse it), we will use the messages component.
 import messages from "./messages"
 
 const messagesList = {
-  fridgify(){
+  postMessage(){
     // 1. Get data
-    // The getAllFoods method will do a fetch and return a promise. This call will return the data from the API in the response.
+    // The getAllMessages method will do a fetch and return a promise. This call will return the data from the API in the response.
     messagesCollection.getAllMessages()
     .then(allMessages => {
 
@@ -16,7 +16,7 @@ const messagesList = {
       let messageDocFragment = document.createDocumentFragment()
 
       // 2. Iterate over data and build HTML for each item
-      // We loop over the array of objects returned from our API and for each obect, we make a call to the foodBuilder method in the food module. This method takes a food object as an argument and returns an HTML component. Once we have that HTML, we append it to our document fragment so that it is slowly built up. By the end of the forEach loop, our document fragment contains all the HTML for all our data.
+      // We loop over the array of objects returned from our API and for each obect, we make a call to the messageBuilder method in the messages module. This method takes a food object as an argument and returns an HTML component. Once we have that HTML, we append it to our document fragment so that it is slowly built up. By the end of the forEach loop, our document fragment contains all the HTML for all our data.
       allMessages.forEach(messageItem => {
         let messageHtml = messages.messageBuilder(messageItem)
         messageDocFragment.appendChild(messageHtml)
@@ -29,7 +29,7 @@ const messagesList = {
       //This while loop essentially removes all child nodes of an element until the element has no child nodes left. It is equivalent to the following:
       // outputArticle.innerHTML = ""
 
-      // If we do not do this, each time we add a new food item using our form, all the food items will be appended to the bottom of our list so that we will have duplicates. To understand why this while loop is needed, try commenting it out and observe the behavior of the application. Essentially, we are clearing out our output container (our article tag with class "output") so that we repopulate it.
+      // If we do not do this, each time we add a new message using our form, all the messages will be appended to the bottom of our list so that we will have duplicates. To understand why this while loop is needed, try commenting it out and observe the behavior of the application. Essentially, we are clearing out our output container (our article tag with class "output") so that we repopulate it.
       while (outputArticle.firstChild) {
         outputArticle.removeChild(outputArticle.firstChild);
       }
