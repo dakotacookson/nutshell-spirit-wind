@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-import foodList from "./news/newsList"
-import foodForm from "./news/newsForm"
-foodList.fridgify()
-foodForm.createAndAppendForm()
-=======
 import login from "./login"
 import registrationForm from "./register";
 login.createAndAppendLoginInput();
 registrationForm.createAndAppendRegistrationForm();
->>>>>>> master
+import NewsList from "./news/newsList"
+import NewsForm from "./news/newsForm"
+NewsList.fridgify()
+NewsForm.createAndAppendForm()

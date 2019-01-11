@@ -1,70 +1,64 @@
-import foodCollection from "./newsCollection"
-import foodList from "./newsList"
+import NewsCollection from "./newsCollection"
+import NewsList from "./newsList"
 
-const foodEditForm = {
-  // This module will build an edit form and append it to the DOM. The form will contain input fields with existing values from the API and an Update button. The user can edit the the values in the input fields. An event listener on the Update button will handle taking the new values entered by the user and calling the API to update the data.
-  createAndAppendForm(articleId, foodObjToEdit) {
+const NewsEditForm = {
+  createAndAppendForm(articleId, NewsObjToEdit) {
 
-    // Building the edit form with fields for the name, expiration and type of the food item. Each of the input fields contains the existing values from the database.
-    let foodNameField = document.createElement("p")
+    let NewsNameField = document.createElement("p")
 
-    let foodNameLabel = document.createElement("label")
-    foodNameLabel.textContent = "Title"
-    let foodNameInput = document.createElement("input")
-    foodNameInput.value = foodObjToEdit.name
+    let NewsNameLabel = document.createElement("label")
+    NewsNameLabel.textContent = "Title"
+    let NewsNameInput = document.createElement("input")
+    NewsNameInput.value = NewsObjToEdit.name
 
-    foodNameField.appendChild(foodNameLabel)
-    foodNameField.appendChild(foodNameInput)
+    NewsNameField.appendChild(NewsNameLabel)
+    NewsNameField.appendChild(NewsNameInput)
 
-    let foodExpirationField = document.createElement("p")
+    let NewsExpirationField = document.createElement("p")
 
-    let foodExpirationLabel = document.createElement("label")
-    foodExpirationLabel.textContent = "Summary"
-    let foodExpirationInput = document.createElement("input")
-    foodExpirationInput.value = foodObjToEdit.expiration
+    let NewsExpirationLabel = document.createElement("label")
+    NewsExpirationLabel.textContent = "Summary"
+    let NewsExpirationInput = document.createElement("input")
+    NewsExpirationInput.value = NewsObjToEdit.expiration
 
-    foodExpirationField.appendChild(foodExpirationLabel)
-    foodExpirationField.appendChild(foodExpirationInput)
+    NewsExpirationField.appendChild(NewsExpirationLabel)
+    NewsExpirationField.appendChild(NewsExpirationInput)
 
-    let foodTypeField = document.createElement("p")
+    let NewsTypeField = document.createElement("p")
 
-    let foodTypeLabel = document.createElement("label")
-    foodTypeLabel.textContent = "URL"
-    let foodTypeInput = document.createElement("input")
-    foodTypeInput.value = foodObjToEdit.type
-    // foodTypeInput.innerHTML=`<a href="${foodTypeInput.value}"> </a>`
-    foodTypeField.appendChild(foodTypeLabel)
-    foodTypeField.appendChild(foodTypeInput)
+    let NewsTypeLabel = document.createElement("label")
+    NewsTypeLabel.textContent = "URL"
+    let NewsTypeInput = document.createElement("input")
+    NewsTypeInput.value = NewsObjToEdit.type
+    NewsTypeField.appendChild(NewsTypeLabel)
+    NewsTypeField.appendChild(NewsTypeInput)
 
     let updateButton = document.createElement("button")
     updateButton.textContent = "Update"
 
-    // There is an event listener on the Update button which will take the new values in the input fields and build an object for the food item to be edited. Then we make a HTTP PUT request where we target the food item we want to edit by specifying the id in the URL. We also pass the object representing the food item with the new values as data in our HTTP request. Once again, because our data has been modified, we make an HTTP GET request to get all the food items and display them.
     updateButton.addEventListener("click", () => {
-      let editedFood = {
-        name: foodNameInput.value,
-        expiration: foodExpirationInput.value,
-        type: foodTypeInput.value
+      let editedNews = {
+        name: NewsNameInput.value,
+        expiration: NewsExpirationInput.value,
+        type: NewsTypeInput.value
       }
 
-      foodCollection.putExistingFood(foodObjToEdit.id, editedFood)
+      NewsCollection.putExistingNews(NewsObjToEdit.id, editedNews)
         .then(response => {
-          foodList.fridgify()
+          NewsList.fridgify()
           return response
         })
     })
 
-    // We passed in the id of the article so we know exactly where to append the edit form.
-    let foodItemArticle = document.querySelector(`#${articleId}`)
+    let NewsItemArticle = document.querySelector(`#${articleId}`)
 
-    // Because we want to replace what is currently in the article element with the edit form, we clear out all children HTML elements in our targeted element before appending our edit form to it.
-    while (foodItemArticle.firstChild) {
-      foodItemArticle.removeChild(foodItemArticle.firstChild);
+    while (NewsItemArticle.firstChild) {
+      NewsItemArticle.removeChild(NewsItemArticle.firstChild);
     }
-    foodItemArticle.appendChild(foodNameField)
-    foodItemArticle.appendChild(foodExpirationField)
-    foodItemArticle.appendChild(foodTypeField)
-    foodItemArticle.appendChild(updateButton)
+    NewsItemArticle.appendChild(NewsNameField)
+    NewsItemArticle.appendChild(NewsExpirationField)
+    NewsItemArticle.appendChild(NewsTypeField)
+    NewsItemArticle.appendChild(updateButton)
   }
 }
-export default foodEditForm
+export default NewsEditForm
