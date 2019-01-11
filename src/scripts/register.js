@@ -1,4 +1,5 @@
 import API from "./api"
+import login from "./login"
 // Declare variables to hold user input
 const userNameInput = document.createElement("input")
 const userPasswordInput = document.createElement("input")
@@ -54,7 +55,11 @@ const registrationForm = {
             email: userEmailValue
           }
 
-API.postNewData("users",newUserToSave)
-        }
+        API.postNewData("users",newUserToSave)
+
+        login.replaceWithLoginForm();
+    }
+
+        
 }
   export default registrationForm
