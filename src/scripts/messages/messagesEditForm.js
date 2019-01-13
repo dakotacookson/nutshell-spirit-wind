@@ -1,0 +1,45 @@
+// import messagesCollection from "./messagesCollection"
+
+// const messagesEditForm = {
+//   // This module will build an edit form and append it to the DOM. The form will contain input fields with existing values from the API and an Update button. The user can edit the the values in the input fields. An event listener on the Update button will handle taking the new values entered by the user and calling the API to update the data.
+//   createAndAppendForm (articleId, messageObjToEdit) {
+
+//     // Building the edit form with fields for the name, expiration and type of the food item. Each of the input fields contains the existing values from the database.
+//     let messageField = document.createElement("p")
+
+//     let messageLabel = document.createElement("label")
+//     messageLabel.textContent = "Message"
+//     let messageInput = document.createElement("input")
+//     messageInput.value = messageObjToEdit.text
+
+//     messageField.appendChild(messageLabel)
+//     messageField.appendChild(messageInput)
+
+//     let submitEditButton = document.createElement("button")
+//     submitEditButton.textContent = "Submit Edit"
+
+//     // There is an event listener on the Update button which will take the new values in the input fields and build an object for the food item to be edited. Then we make a HTTP PUT request where we target the food item we want to edit by specifying the id in the URL. We also pass the object representing the food item with the new values as data in our HTTP request. Once again, because our data has been modified, we make an HTTP GET request to get all the food items and display them.
+//     submitEditButton.addEventListener("click", () => {
+//       let editedMessage = {
+//         text: messageInput.value,
+//         editValue: 1
+//       }
+      
+//       messagesCollection.patchExistingMessage(messageObjToEdit.id, editedMessage)
+//       .then(response => {
+//         messagesList.postMessage()
+//       })
+//     })
+
+//     // We passed in the id of the article so we know exactly where to append the edit form.
+//     let messageArticle = document.querySelector(`#${articleId}`)
+
+//     // Because we want to replace what is currently in the article element with the edit form, we clear out all children HTML elements in our targeted element before appending our edit form to it.
+//     while (messageArticle.firstChild) {
+//       messageArticle.removeChild(messageArticle.firstChild);
+//     }
+//     messageArticle.appendChild(messageField)
+//     messageArticle.appendChild(submitEditButton)
+//   }
+// }
+// export default messagesEditForm

@@ -17,7 +17,41 @@ const messagesCollection = {
       },
       body: JSON.stringify(newMessageToSave)
     })
+  },
+  // In order to delete a item from the JSON Server API, all we need is the id of the item in order to target it, which is the only argument this method has.
+  deleteFood(messageId) {
+  return fetch(`http://localhost:8088/messages/${messageId}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json"
+      }
+    })
+  },
+  // Again, you need the id of the food item in order to get data for that item back from the API.
+  getMessage(messageId) {
+    return fetch(`http://localhost:8088/messages/${messageId}`)
+    .then(response => response.json())
+  },
+  // In order to edit an existing food item, we need the id to identify which food item we want to edit and the new data we want to replace the existing data with. So this time, we have two arguments for the method.
+  putExistingMessage(messageId, messageToEdit) {
+    return fetch(`http://localhost:8088/messages/${messageId}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(messageToEdit)
+    })
+  },
+  // In order to edit an existing food item, we need the id to identify which food item we want to edit and the new data we want to replace the existing data with. So this time, we have two arguments for the method.
+  patchExistingMessage(messageId, messageToEdit) {
+    return fetch(`http://localhost:8088/messages/${messageId}`, {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(messageToEdit)
+    })
   }
-}
+};
 
 export default messagesCollection

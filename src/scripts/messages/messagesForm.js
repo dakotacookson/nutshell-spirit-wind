@@ -56,6 +56,7 @@ const messagesForm = {
     let newMessage = {
       text: inputMessage,
       timeStamp: messageTimeStamp,
+      editValue: 0,
       userId: "placeholder"
     }
 
