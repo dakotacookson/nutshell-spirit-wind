@@ -1,5 +1,5 @@
 import API from "../api";
-
+import yup from "../tasks/tasksBuilder"
 const tasksContainer = document.querySelector(".output__tasks")
 const tasks = {
     taskBuilder(taskObject) {
@@ -7,15 +7,19 @@ const tasks = {
         tasksContainer.appendChild(tasksArticle);
         const taskTitle = document.createElement("h2");
         tasksArticle.appendChild(taskTitle);
-        taskTitle.textContent = taskObject.title
-
     },
-
-    tasksList(){
+// Fetches and appends tasks
+    getTasks(){
         API.getData("tasks")
         .then(allTasks => {
-            console.log("test")
+            allTasks.forEach(task => {
+                console.log(task)
+                yup.taskBuilder(task)
+            });
+        
+        
         })
+        
     }
 
     // fridgify(){
