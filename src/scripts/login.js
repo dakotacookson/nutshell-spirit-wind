@@ -7,6 +7,7 @@ const loginPage = document.querySelector(".output__login");
 registrationPage.style.display = "none";
 
 const login = {
+
 // Function to create and append login input fields and login button.
     createAndAppendLoginInput() {
 
@@ -38,9 +39,10 @@ const login = {
             let usersProcessed = 1;
             allUsers.forEach(user => {
                 if (username === user.userName && password === user.password) {
-                    console.log(`This one: ${user.id}`)
+                    console.log(`${user.userName} with user ID ${user.id} is the current user`)
                     sessionStorage.setItem('userId', user.id)
                     let userId = sessionStorage.getItem('userId');
+                    sessionStorage.setItem('userName', user.userName)
                     
                     loadUserSpecificPage(userId);
                     
