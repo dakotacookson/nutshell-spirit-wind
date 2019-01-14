@@ -1,5 +1,6 @@
 import NewsCollection from "./newsCollection"
 import NewsList from "./newsList"
+import login from "../login"
 
 const NewsForm = {
 
@@ -70,11 +71,13 @@ const NewsForm = {
     let inputNewsName = document.querySelector("#News__name").value
     let inputNewsExpiration = document.querySelector("#News__expiration").value
     let inputNewsType = document.querySelector("#News__type").value
+    let userIdtytpe = sessionStorage
 
     let newNews = {
       name: inputNewsName,
       expiration: inputNewsExpiration,
-      type: inputNewsType
+      type: inputNewsType,
+      userId: userIdtytpe
     }
 
     NewsCollection.postNewNews(newNews)
