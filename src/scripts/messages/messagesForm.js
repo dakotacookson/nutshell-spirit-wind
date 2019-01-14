@@ -1,6 +1,5 @@
 import messagesCollection from "./messagesCollection"
 import messagesList from "./messagesList"
-// import API from "../api"
 
 const messagesForm = {
 
@@ -42,26 +41,9 @@ const messagesForm = {
   },
   // This module will also contain the function that executes when the button in the form is clicked. When the button in the form is clicked, the following will happen:
   handleAddNewMessage (event) {
-    // API.getData("users")
-    //     .then(allUsers => {
-    //         let usersProcessed = 1;
-    //         allUsers.forEach(user => {
-    //             if (username === user.userName && password === user.password) {
-    //                 console.log(`${user.userName} with user ID ${user.id} is the current user`)
-    //                 sessionStorage.setItem('userId', user.id)
-    //                 let userId = sessionStorage.getItem('userId');
-    //                 sessionStorage.setItem('userName', user.userName)
-                    
-    //                 loadUserSpecificPage(userId);
-                    
-    //             } else if (usersProcessed === allUsers.length) {
-    //                 alert("Username/password invalid. If new user, please register. :)")
-    //             } else {
-    //                 usersProcessed ++
     // 1. Get user input that user entered
     let inputMessage = document.querySelector("#message").value
     let messageTimeStamp = new Date().toLocaleString();
-    let currentUserId = sessionStorage.getItem("userId")
 
     // 2. Create a new object with the same structure we have been using throughout the application to represent a message:
     // {
@@ -75,7 +57,7 @@ const messagesForm = {
       text: inputMessage,
       timeStamp: messageTimeStamp,
       editValue: 0,
-      userId: parseInt(currentUserId)
+      userId: "placeholder"
     }
 
     // 3. Call the method(postNewMessage) with the fetch request to POST to the API and pass it the object we created in the previous step
