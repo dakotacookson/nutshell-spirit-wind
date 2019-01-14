@@ -7,10 +7,16 @@
       "userName": "ghostman1"
     },
     {
-      "userName": "Lord ainz",
+      "userName": "Lord_ainz",
       "password": "Albedeio",
       "email": "LordAinz101@gmail.com",
       "id": 2
+    },
+    {
+      "userName": "",
+      "password": "",
+      "email": "",
+      "id": 3
     }
   ],
   "messages": [
@@ -21,39 +27,9 @@
       "userId": 1
     }
   ],
-  "News": [
-    {
-      "id": 1,
-      "title": "",
-      "summary": "",
-      "url": "",
-      "userId": ""
-    },
-    {
-      "name": "Spoopy news",
-      "expiration": "Spopooooooooopy",
-      "type": "https://qz.com/quartzy/1439590/a-viral-typo-from-2009-is-the-perfect-word-for-this-spooky-funny-time-of-year/",
-      "id": 2
-    }
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "title": "",
-      "dueDate": "",
-      "complete": false,
-      "userId": ""
-    }
-  ],
-  "events": [
-    {
-      "id": 1,
-      "name": "",
-      "location": "",
-      "eventDate": "",
-      "userId": ""
-    }
-  ],
+  "News": [],
+  "tasks": [],
+  "events": [],
   "friends": [
     {
       "id": 1,
