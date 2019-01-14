@@ -12,6 +12,20 @@ const API = {
           },
           body: JSON.stringify(payload)
         })
+      },
+      getTask(taskId) {
+          return fetch(`http://localhost:8088/tasks/${taskId}`)
+          .then(response => response.json())
+      },
+
+      putExistingTask(taskId, taskToEdit) {
+        return fetch(`http://localhost:8088/tasks/${taskId}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(taskToEdit)
+        })
       }
 
 }

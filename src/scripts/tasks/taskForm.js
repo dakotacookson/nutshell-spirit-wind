@@ -1,4 +1,5 @@
 import API from "../api"
+import taskList from "./taskList"
 
 
 const taskFormTaskInput = document.createElement("input");
@@ -40,7 +41,7 @@ const taskForm = {
         const userId = JSON.parse(currentUserId);
 
         let newTask = {
-            name: taskTitle,
+            title: taskTitle,
             dueDate: taskDueDate,
             complete: false,
             userId: userId
@@ -49,6 +50,8 @@ const taskForm = {
         console.log(newTask);
 
         API.postNewData("tasks",newTask);
+
+        // taskList.listTasks();
 
     }
     
