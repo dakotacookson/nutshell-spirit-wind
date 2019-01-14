@@ -80,7 +80,7 @@ const friendsList = {
     API.getData("friends")
     .then(allFriends => {
       console.log(allFriends)
-      })
+      
       // An empty document fragment
       let friendDocFragment = document.createDocumentFragment()
 
