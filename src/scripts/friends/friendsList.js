@@ -90,13 +90,13 @@ const friendsList = {
       allFriends.forEach(friend => {
         if (userId === friend.currentUserId) {
           console.log("userId",userId,"friend.currentUserId",friend.currentUserId,"friend")
-// 
-          API.getData("users")
-          .then(allUsers => {
-            // compare userId.Id to friend.Id
-            // if(friends.Id === users.Id) 
-            allUsers.filter(callback[, friend.id])
-// 
+// // 
+//           API.getData("users")
+//           .then(allUsers => {
+//             // compare userId.Id to friend.Id
+//             // if(friends.Id === users.Id) 
+//             allUsers.filter(callback[, friend.id])
+// // 
         let friendHtml = friends.friendBuilder(friend)
         friendDocFragment.appendChild(friendHtml)
 
