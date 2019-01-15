@@ -1,4 +1,5 @@
 import API from "./api"
+import friendsList from "./friends/friendsList"
 import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
@@ -63,6 +64,7 @@ if (userIdtytpe >= 1) {
                         const taskContainer = document.querySelector(".output__tasks");
                         dashboard.textContent = "Dashboard";
                         taskContainer.appendChild(dashboard);
+                        friendsList.getFriendsList()
 
                     }
                 })
