@@ -1,6 +1,6 @@
 import NewsCollection from "./newsCollection"
 import NewsList from "./newsList"
-
+import login from "../login"
 const NewsEditForm = {
   createAndAppendForm(articleId, NewsObjToEdit) {
 
@@ -35,12 +35,13 @@ const NewsEditForm = {
 
     let updateButton = document.createElement("button")
     updateButton.textContent = "Update"
-
+    let userIdtytpe = sessionStorage.getItem('userId');
     updateButton.addEventListener("click", () => {
       let editedNews = {
         name: NewsNameInput.value,
         expiration: NewsExpirationInput.value,
-        type: NewsTypeInput.value
+        type: NewsTypeInput.value,
+        userId: userIdtytpe
       }
 
       NewsCollection.putExistingNews(NewsObjToEdit.id, editedNews)
