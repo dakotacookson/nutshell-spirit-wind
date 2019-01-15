@@ -59,6 +59,8 @@ const login = {
                     const taskContainer = document.querySelector(".output__tasks");
                     dashboard.textContent = "Dashboard";
                     taskContainer.appendChild(dashboard);
+                    
+                    location.reload();
 
                 } 
             })

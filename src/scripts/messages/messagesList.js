@@ -101,7 +101,7 @@ const messages = {
     messageArticle.appendChild(messageText)
     messageArticle.appendChild(messageTimeStamp)
     // messageArticle.appendChild(deleteMessageButton)
-    messageArticle.appendChild(editMessageButton)
+    if (sessionStorage.userId == messageObject.userId) {messageArticle.appendChild(editMessageButton)}
 
     return messageArticle
   }

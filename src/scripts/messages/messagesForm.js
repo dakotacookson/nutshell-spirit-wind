@@ -44,6 +44,7 @@ const messagesForm = {
     // 1. Get user input that user entered
     let inputMessage = document.querySelector("#message").value
     let messageTimeStamp = new Date().toLocaleString();
+    let currentUserId = sessionStorage.getItem("userId")
 
     // 2. Create a new object with the same structure we have been using throughout the application to represent a message:
     // {
@@ -57,7 +58,7 @@ const messagesForm = {
       text: inputMessage,
       timeStamp: messageTimeStamp,
       editValue: 0,
-      userId: "placeholder"
+      userId: parseInt(currentUserId)
     }
 
     // 3. Call the method(postNewMessage) with the fetch request to POST to the API and pass it the object we created in the previous step
