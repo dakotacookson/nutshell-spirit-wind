@@ -1,6 +1,5 @@
 import NewsCollection from "./newsCollection"
 import NewsList from "./newsList"
-import login from "../login"
 
 const NewsForm = {
 
