@@ -1,6 +1,8 @@
 import API from "./api"
-// import friendsList from "./friends/friendsList"
-// import registrationForm from "./register"
+import friendsList from "./friends/friendsList"
+import registrationForm from "./register"
+import taskForm from "./tasks/taskForm";
+import taskList from "./tasks/taskList";
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
 const registrationPage = document.querySelector(".output__registration")
@@ -64,6 +66,9 @@ const login = {
                     location.reload();
 
                     // friendsList.getFriendsList()
+
+                    taskForm.taskFormBuilder();
+                    taskList.listTasks();
 
                 } 
             })

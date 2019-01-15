@@ -1,5 +1,7 @@
 import messagesList from "./messages/messagesList"
 import messagesForm from "./messages/messagesForm"
+import taskForm from "./tasks/taskForm"
+import taskList from "./tasks/taskList"
 import login from "./login"
 import NewsList from "./news/newsList"
 import NewsForm from "./news/newsForm"
@@ -20,5 +22,8 @@ if (sessionStorage.userId >= 1) {
   NewsList.fridgify()
   NewsForm.createAndAppendForm()
   friendsList.getFriendsList()
+  taskForm.taskFormBuilder();
+  taskList.listTasks();
+
 }
 
