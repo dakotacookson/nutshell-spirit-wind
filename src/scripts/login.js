@@ -26,20 +26,19 @@ const login = {
         registerButton.textContent = ("register");
         outEl.appendChild(loginButton);
         outEl.appendChild(registerButton);
-        // Runs the getUserData() function when Login button is clicked.
+// Runs the getUserData() function when Login button is clicked.
         loginButton.addEventListener("click", this.getUserData);
-        // Runs the replaceWithRegistrationForm() function when Register button is clicked.
+// Runs the replaceWithRegistrationForm() function when Register button is clicked.
         registerButton.addEventListener("click", this.replaceWithRegistrationForm);
     },
-    // Gathers data entered into Login input fields. Fetches userdata from API and compares input data with existing user data in API. If input data matches user data in API, runs loadUserSpecificPage(). If input data does not match any user data in API, alert is sent.
-    getUserData() {
+// Gathers data entered into Login input fields. Fetches userdata from API and compares input data with existing user data in API. If input data matches user data in API, runs loadUserSpecificPage(). If input data does not match any user data in API, alert is sent.
+    getUserData () {
         const username = userNameInput.value;
         const password = passwordInput.value;
         API.getData("users")
         .then(allUsers => {
             let usersProcessed = 1;
             allUsers.forEach(user => {
-                
                 if (username === user.userName && password === user.password) {
                     console.log(`${user.userName} with user ID ${user.id} is the current user`)
                     sessionStorage.setItem('userId', user.id)
@@ -63,20 +62,34 @@ const login = {
                     taskContainer.appendChild(dashboard);
                     
                     location.reload();
-            }
-    replaceWithRegistrationForm() ;{
-        console.log("testing");
-        const registrationPage = document.querySelector(".output__registration")
-        const loginPage = document.querySelector(".output__login");
-        loginPage.style.display = "none";
-        registrationPage.style.display = "block";
-    }
-    replaceWithLoginForm();{
-        console.log("LoginForm");
-        loginPage.style.display = "block";
-        registrationPage.style.display = "none";
-    }
+
+                    // friendsList.getFriendsList()
+
+                } 
             })
 
 
-export default login})}}
+            
+        
+        })
+        
+     }, 
+ // Function to hide the login form and display the register form.  
+        replaceWithRegistrationForm() {
+            console.log("testing");
+            const registrationPage = document.querySelector(".output__registration")
+            const loginPage = document.querySelector(".output__login");
+            loginPage.style.display = "none";
+            registrationPage.style.display = "block";
+     },
+// Function to hide the register form and display the login form.
+        replaceWithLoginForm() {
+            console.log("LoginForm");
+            loginPage.style.display = "block";
+            registrationPage.style.display = "none";
+        }
+        }
+    
+
+
+export default login
