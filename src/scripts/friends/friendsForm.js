@@ -1,5 +1,5 @@
-import friendsCollection from "./friendsCollection"
-import friendsList from "./friendsList"
+// import friendsCollection from "./friendsCollection"
+// import friendsList from "./friendsList"
 
 const friendsForm = {
 
