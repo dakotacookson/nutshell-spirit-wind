@@ -1,4 +1,5 @@
 import API from "./api"
+import friendsList from "./friends/friendsList"
 import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
@@ -54,13 +55,15 @@ const login = {
 // This function will load the dashboard for the user that signed in. (Work in Progress)
             function loadUserSpecificPage(userId) {
                     loginPage.style.display = "none";
-                    console.log(`This is the user page! ${userId}`);
+                    // console.log(`This is the user page! ${userId}`);
                     const dashboard = document.createElement("h2");
                     const taskContainer = document.querySelector(".output__tasks");
                     dashboard.textContent = "Dashboard";
                     taskContainer.appendChild(dashboard);
                     
                     location.reload();
+
+                    friendsList.getFriendsList()
 
                 } 
             })
