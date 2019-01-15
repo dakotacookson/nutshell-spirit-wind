@@ -35,8 +35,7 @@ const NewsEditForm = {
 
     let updateButton = document.createElement("button")
     updateButton.textContent = "Update"
-
-    let userIdtytpe = sessionStorage
+    let userIdtytpe = sessionStorage.getItem('userId');
     updateButton.addEventListener("click", () => {
       let editedNews = {
         name: NewsNameInput.value,

@@ -37,7 +37,13 @@ const login = {
             .then(allUsers => {
                 let usersProcessed = 1;
                 allUsers.forEach(user => {
-                    if (username === user.userName && password === user.password) {
+
+                    let formArticle2 = document.querySelector(".output__news")
+let userIdtytpe = sessionStorage.getItem('userId');
+if (userIdtytpe >= 1) {
+  formArticle2.className = "output__news3"
+}
+                    else if (username === user.userName && password === user.password) {
                         console.log(`This one: ${user.id}`)
                         sessionStorage.setItem('userId', user.id)
                         let userId = sessionStorage.getItem('userId');
