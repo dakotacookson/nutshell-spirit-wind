@@ -11,7 +11,4 @@ login.createAndAppendLoginInput();
 
 registrationForm.createAndAppendRegistrationForm();
 
-taskForm.taskFormBuilder();
-taskList.listTasks();
 
-// tasks.getTasks();

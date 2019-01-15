@@ -1,42 +1,91 @@
 // This component will get the data, build the HTML from the data and append it to the DOM.
 
-// To get the data, we will use the friendsCollection component.
-import friendsCollection from "./friendsCollection"
-// To build the HTML for each object in the array of friends(which is what the data coming from the API becomes once we parse it), we will use the friends component.
-import friends from "./friends"
+import API from "../api"
 
-const friendsList = {
-  friendify(){
-    // 1. Get data
-    // The getAllFriends method will do a fetch and return a promise. This call will return the data from the API in the response.
-    friendsCollection.getAllFriends()
-    .then(allFriends => {
+//Given a single friend object, this component builds out the HTML and returns it
+const friends = {
 
-      // An empty document fragment
-      let foodDocFragment = document.createDocumentFragment()
+  // This HTML is then returned to the point from where this method was called
+  userFriendBuilder(friendObject) {
+    let friendArticle = document.createElement("article")
 
-      // 2. Iterate over data and build HTML for each item
-      // We loop over the array of objects returned from our API and for each obect, we make a call to the foodBuilder method in the food module. This method takes a food object as an argument and returns an HTML component. Once we have that HTML, we append it to our document fragment so that it is slowly built up. By the end of the forEach loop, our document fragment contains all the HTML for all our data.
-      allFriends.forEach(friendItem => {
-        let friendHtml = friend.friendBuilder(friendItem)
-        friendDocFragment.appendChild(friendHtml)
-      })
-      
-      // 3. Append the HTML to the DOM
-      // We get a reference to a HTML element with the class "output" and append our document fragment to that element. Because the HTML element with class "output" is already on the DOM, the HTML in the document fragment is appended to the DOM.
-      let outputArticle = document.querySelector(".output")
+    friendArticle.setAttribute("id", `friend--${friendObject.id}`)
 
-      //This while loop essentially removes all child nodes of an element until the element has no child nodes left. It is equivalent to the following:
-      // outputArticle.innerHTML = ""
+    let friendUserName = document.createElement("h3")
+    friendUserName.textContent = friendObject.userName
+    let friendEmail = document.createElement("p")
+    friendEmail.textContent = friendObject.email
 
-      // If we do not do this, each time we add a new friend item using our form, all the friend items will be appended to the bottom of our list so that we will have duplicates. To understand why this while loop is needed, try commenting it out and observe the behavior of the application. Essentially, we are clearing out our output container (our article tag with class "output") so that we repopulate it.
-      while (outputArticle.firstChild) {
-        outputArticle.removeChild(outputArticle.firstChild);
-      }
-      outputArticle.appendChild(friendDocFragment)
 
+
+    let editfriendButton = document.createElement("button")
+    editfriendButton.textContent = "Edit"
+    editfriendButton.addEventListener("click", () => {
+      let articleId = event.target.parentNode.id
+      let friendId = articleId.split("--")[1]
+      friendCollection.getfriend(friendId)
+        .then(response => {
+          friendEditForm.createAndAppendForm(articleId, response)
+        })
     })
+
+
+    let deletefriendButton = document.createElement("button")
+    deletefriendButton.textContent = "Delete"
+    deletefriendButton.addEventListener("click", () => {
+      let friendId = event.target.parentNode.id.split("--")[1]
+      friendCollection.deletefriend(friendId)
+        .then(response => {
+          friendsList.getfriend(response)
+        })
+    })
+
+    friendArticle.appendChild(friendUserName)
+    friendArticle.appendChild(friendEmail)
+    friendArticle.appendChild(editfriendButton)
+    friendArticle.appendChild(deletefriendButton)
+
+    return friendArticle
   }
 }
 
-export default foodList
+const friendsList = {
+
+  getFriendsList() {
+    // An empty document fragment
+    let friendDocFragment = document.createDocumentFragment()
+    // get the current user's Id from database and parse it to be usable
+    let userIdString = sessionStorage.getItem('userId');
+    let userId = JSON.parse(userIdString)
+
+    // 1. Get data
+    // The getData method will do a fetch and return a promise. This call will return the data from the API in the response.
+    API.getData("friends")
+      .then(allFriends => {
+        allFriends.forEach(friend => {
+          if (userId === friend.currentUserId) {
+            console.log("matched friend")
+            // fetch all users
+            API.getData("users")
+              .then(allUsers => {
+              // Loop through users to obtain the username and email data
+                allUsers.forEach(user => {
+                // if user's a friend add to html 
+                  if (user.id === friend.friendId) {
+                    let friendHtml = friends.userFriendBuilder(user)
+                    console.log("friendHtml", friendHtml)
+                    friendDocFragment.appendChild(friendHtml)
+                  }
+                })
+                // 3. Append the HTML to the DOM            
+                let outputArticle = document.querySelector(".output__friends")
+                outputArticle.appendChild(friendDocFragment)
+
+              })
+            }
+          })
+        })
+
+      }
+    }
+            export default friendsList
