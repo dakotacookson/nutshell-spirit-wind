@@ -60,9 +60,9 @@ const messages = {
   // This HTML is then returned to the point from where this method was called
   messageBuilder(messageObject) {
     
-    messageUsername(messageObject.userId) {
+    // messageUsername(messageObject.userId) {
 
-    } 
+    // } 
 
     let messageArticle = document.createElement("article")
     messageArticle.setAttribute("id", `message--${messageObject.id}`)
