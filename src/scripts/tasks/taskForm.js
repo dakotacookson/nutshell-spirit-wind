@@ -49,9 +49,11 @@ const taskForm = {
 
         console.log(newTask);
 
-        API.postNewData("tasks",newTask);
+        API.postNewData("tasks",newTask)
 
-        // taskList.listTasks();
+        .then(response => {
+            taskList.listTasks();
+          })
 
     }
     
