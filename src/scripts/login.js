@@ -39,7 +39,7 @@ const login = {
             let usersProcessed = 1;
             allUsers.forEach(user => {
                 if (username === user.userName && password === user.password) {
-                    console.log(`This one: ${user.id}`)
+                    // console.log(`This one: ${user.id}`)
                     sessionStorage.setItem('userId', user.id)
                     let userId = sessionStorage.getItem('userId');
                     
@@ -53,7 +53,7 @@ const login = {
 // This function will load the dashboard for the user that signed in. (Work in Progress)
             function loadUserSpecificPage(userId) {
                     loginPage.style.display = "none";
-                    console.log(`This is the user page! ${userId}`);
+                    // console.log(`This is the user page! ${userId}`);
                     const dashboard = document.createElement("h2");
                     const taskContainer = document.querySelector(".output__tasks");
                     dashboard.textContent = "Dashboard";

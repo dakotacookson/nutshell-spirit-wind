@@ -7,17 +7,15 @@ const friends = {
 
   // This HTML is then returned to the point from where this method was called
   userFriendBuilder(friendObject) {
-    // console.log("friendObject", friendObject)
     let friendArticle = document.createElement("article")
 
     friendArticle.setAttribute("id", `friend--${friendObject.id}`)
 
     let friendUserName = document.createElement("h3")
     friendUserName.textContent = friendObject.userName
-    // console.log("this is friendObject.userName", friendObject.userName)
     let friendEmail = document.createElement("p")
     friendEmail.textContent = friendObject.email
-    // console.log("this is friendObject.email", friendObject.email)
+
 
 
     let editfriendButton = document.createElement("button")
@@ -38,7 +36,7 @@ const friends = {
       let friendId = event.target.parentNode.id.split("--")[1]
       friendCollection.deletefriend(friendId)
         .then(response => {
-          friendsList.getfriend()
+          friendsList.getfriend(response)
         })
     })
 
@@ -67,34 +65,27 @@ const friendsList = {
         allFriends.forEach(friend => {
           if (userId === friend.currentUserId) {
             console.log("matched friend")
+            // fetch all users
             API.getData("users")
               .then(allUsers => {
-              
+              // Loop through users to obtain the username and email data
                 allUsers.forEach(user => {
-                
+                // if user's a friend add to html 
                   if (user.id === friend.friendId) {
-                    console.log("user.id", user.id, "user that is a friend", user, "friend.friendId",friend.friendId)
                     let friendHtml = friends.userFriendBuilder(user)
+                    console.log("friendHtml", friendHtml)
                     friendDocFragment.appendChild(friendHtml)
                   }
                 })
+                // 3. Append the HTML to the DOM            
+                let outputArticle = document.querySelector(".output__friends")
+                outputArticle.appendChild(friendDocFragment)
+
               })
             }
           })
         })
 
-              // 3. Append the HTML to the DOM            
-              let outputArticle = document.querySelector(".output__friends")
-
-              // This while loop essentially removes all child nodes of an element until the element has no child nodes left.
-              while (outputArticle.firstChild) {
-                  outputArticle.removeChild(outputArticle.firstChild);
-                }
-                outputArticle.appendChild(friendDocFragment)
-              }
-            }
-
+      }
+    }
             export default friendsList
-            // userFriends.push(friend)
-            // console.log("userId", userId, "friend.currentUserId", friend.currentUserId, "friendId", friend.friendId)
-            // let friendCollection = []
