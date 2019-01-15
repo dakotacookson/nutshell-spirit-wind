@@ -3,6 +3,7 @@ import messagesForm from "./messages/messagesForm"
 import login from "./login"
 import registrationForm from "./register"
 import logout from "./logout"
+import friendsList from "./friends/friendsList"
 
 if (sessionStorage.userId === undefined) {
   login.createAndAppendLoginInput();
@@ -14,4 +15,5 @@ if (sessionStorage.userId >= 1) {
   console.log(sessionStorage.userId)
   messagesList.postMessage();
   messagesForm.createAndAppendForm();
+  friendsList.getFriendsList()
 }

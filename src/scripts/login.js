@@ -1,6 +1,6 @@
 import API from "./api"
-import friendsList from "./friends/friendsList"
-import registrationForm from "./register"
+// import friendsList from "./friends/friendsList"
+// import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
 const registrationPage = document.querySelector(".output__registration")
@@ -63,7 +63,7 @@ const login = {
                     
                     location.reload();
 
-                    friendsList.getFriendsList()
+                    // friendsList.getFriendsList()
 
                 } 
             })

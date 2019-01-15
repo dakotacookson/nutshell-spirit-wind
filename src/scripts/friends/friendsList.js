@@ -88,4 +88,4 @@ const friendsList = {
 
       }
     }
-            export default friendsList
+export default friendsList
