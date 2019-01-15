@@ -1,6 +1,8 @@
 import NewsCollection from "./newsCollection"
 import NewsList from "./newsList"
 import NewsEditForm from "./newsEditForm"
+import login from "../login"
+
 
 const News = {
 
@@ -28,7 +30,6 @@ const News = {
           NewsEditForm.createAndAppendForm(articleId, response)
         })
     })
-
     let deleteNewsButton = document.createElement("button")
     deleteNewsButton.textContent = "Delete"
     deleteNewsButton.addEventListener("click", () => {
@@ -40,6 +41,8 @@ const News = {
         })
     })
 
+
+
     NewsArticle.appendChild(NewsName)
     NewsArticle.appendChild(NewsExp)
     NewsArticle.appendChild(NewsType)
@@ -47,7 +50,8 @@ const News = {
     NewsArticle.appendChild(deleteNewsButton)
 
     return NewsArticle
-  }
 }
+}  
+
 
 export default News

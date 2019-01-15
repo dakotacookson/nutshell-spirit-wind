@@ -61,20 +61,22 @@ const NewsForm = {
     NewsFormFragment.appendChild(NewsExpirationField)
     NewsFormFragment.appendChild(NewsTypeField)
     NewsFormFragment.appendChild(submitButton)
-
     let formArticle = document.querySelector(".output__news")
     formArticle.appendChild(NewsFormFragment)
-
   },
+
+
   handleAddNewNews() {
     let inputNewsName = document.querySelector("#News__name").value
     let inputNewsExpiration = document.querySelector("#News__expiration").value
     let inputNewsType = document.querySelector("#News__type").value
-
+    let userIdtytpe = sessionStorage.getItem('userId');
+ 
     let newNews = {
       name: inputNewsName,
       expiration: inputNewsExpiration,
-      type: inputNewsType
+      type: inputNewsType,
+      userId: userIdtytpe
     }
 
     NewsCollection.postNewNews(newNews)
@@ -85,5 +87,6 @@ const NewsForm = {
       })
   }
 }
+
 
 export default NewsForm

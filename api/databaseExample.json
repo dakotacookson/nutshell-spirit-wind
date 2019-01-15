@@ -5,6 +5,18 @@
       "email": "ghosthunterx55@hotmail.com",
       "password": "spookyghost",
       "userName": "ghostman1"
+    },
+    {
+      "userName": "Lord_ainz",
+      "password": "Albedeio",
+      "email": "LordAinz101@gmail.com",
+      "id": 2
+    },
+    {
+      "userName": "",
+      "password": "",
+      "email": "",
+      "id": 3
     }
   ],
   "messages": [
@@ -15,33 +27,9 @@
       "userId": 1
     }
   ],
-  "newsArticles": [
-    {
-      "id": 1,
-      "title": "",
-      "summary": "",
-      "url": "",
-      "userId": ""
-    }
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "title": "",
-      "dueDate": "",
-      "complete": false,
-      "userId": ""
-    }
-  ],
-  "events": [
-    {
-      "id": 1,
-      "name": "",
-      "location": "",
-      "eventDate": "",
-      "userId": ""
-    }
-  ],
+  "News": [],
+  "tasks": [],
+  "events": [],
   "friends": [
     {
       "id": 1,

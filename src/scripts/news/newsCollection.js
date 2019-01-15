@@ -4,6 +4,11 @@ const NewsCollection = {
         return fetch("http://localhost:8088/News")
             .then(response => response.json())
     },
+    
+    getAllids(userids) {
+        return fetch("http://localhost:8088/friends")
+            .then(response => response.json())
+    },
 
 
     postNewNews(newNewsToSave) {
@@ -38,5 +43,5 @@ const NewsCollection = {
     }
 }
 console.table(NewsCollection.getAllNewss())
-
+console.table(NewsCollection.getAllids())
 export default NewsCollection
