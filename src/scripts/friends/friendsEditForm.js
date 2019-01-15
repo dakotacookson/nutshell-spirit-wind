@@ -1,5 +1,5 @@
-import foodCollection from "./foodCollection"
-import foodList from "./foodList"
+// import foodCollection from "./foodCollection"
+// import foodList from "./foodList"
 
 const foodEditForm = {
   // This module will build an edit form and append it to the DOM. The form will contain input fields with existing values from the API and an Update button. The user can edit the the values in the input fields. An event listener on the Update button will handle taking the new values entered by the user and calling the API to update the data.

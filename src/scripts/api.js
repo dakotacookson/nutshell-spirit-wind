@@ -4,6 +4,10 @@ const API = {
         return fetch(`http://localhost:8088/${resource}`)
         .then(response => response.json())
     },
+    getPayloadData(resource, payload) {
+        return fetch(`http://localhost:8088/${resource}/${payload}`)
+        .then(response => response.json())
+    },
     postNewData(resource,payload) {
         return fetch(`http://localhost:8088/${resource}`, {
           method: "POST",
@@ -12,8 +16,16 @@ const API = {
           },
           body: JSON.stringify(payload)
         })
-      }
-
+      },
+        // In order to delete an item from the JSON Server API, all we need is the id of the item in order to target it, which is the only argument this method has.
+    deleteData(resource) {
+        return fetch(`http://localhost:8088/messages/${resource}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+            }
+        })
+    }
 }
 
 

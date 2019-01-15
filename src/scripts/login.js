@@ -1,6 +1,6 @@
 import API from "./api"
-import friendsList from "./friends/friendsList"
-import registrationForm from "./register"
+// import friendsList from "./friends/friendsList"
+// import registrationForm from "./register"
 const userNameInput = document.createElement("input");
 const passwordInput = document.createElement("input");
 const registrationPage = document.querySelector(".output__registration")
@@ -8,6 +8,7 @@ const loginPage = document.querySelector(".output__login");
 registrationPage.style.display = "none";
 
 const login = {
+
 // Function to create and append login input fields and login button.
     createAndAppendLoginInput() {
 
@@ -39,9 +40,10 @@ const login = {
             let usersProcessed = 1;
             allUsers.forEach(user => {
                 if (username === user.userName && password === user.password) {
-                    // console.log(`This one: ${user.id}`)
+                    console.log(`${user.userName} with user ID ${user.id} is the current user`)
                     sessionStorage.setItem('userId', user.id)
                     let userId = sessionStorage.getItem('userId');
+                    sessionStorage.setItem('userName', user.userName)
                     
                     loadUserSpecificPage(userId);
                     
@@ -58,8 +60,10 @@ const login = {
                     const taskContainer = document.querySelector(".output__tasks");
                     dashboard.textContent = "Dashboard";
                     taskContainer.appendChild(dashboard);
+                    
+                    location.reload();
 
-                    friendsList.getFriendsList()
+                    // friendsList.getFriendsList()
 
                 } 
             })
