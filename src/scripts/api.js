@@ -26,6 +26,14 @@ const API = {
           },
           body: JSON.stringify(taskToEdit)
         })
+      },
+      deleteTask(taskId) {
+          return fetch (`http://localhost:8088/tasks/${taskId}` , {
+              method: "DELETE",
+              headers: {
+                  "Content-Type": "application/json"
+              }
+          })
       }
 
 }

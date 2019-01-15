@@ -1,5 +1,6 @@
 import API from "../api"
 import taskEditForm from "./taskEditForm"
+import taskList from "./taskList";
 
 const tasks = {
   taskBuilder(taskObj) {
@@ -32,6 +33,14 @@ const tasks = {
     const taskDeleteButton = document.createElement("button");
     taskOutputSection.appendChild(taskDeleteButton);
     taskDeleteButton.textContent = "Delete";
+    taskDeleteButton.addEventListener("click", () => {
+      let taskId = event.target.parentNode.id.split("--")[1]
+      API.deleteTask(taskId)
+      .then(response => {
+        taskList.listTasks();
+      })
+
+    })
   }
 }
 
